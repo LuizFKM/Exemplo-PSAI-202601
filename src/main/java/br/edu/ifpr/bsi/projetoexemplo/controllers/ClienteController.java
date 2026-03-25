@@ -29,9 +29,6 @@ public class ClienteController {
     // CREATE - Criar um novo cliente (POST)
     @PostMapping
     public ResponseEntity<Cliente> criar(@RequestBody Cliente request) {
-        if (request.getCodigo() != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Atualização permitida somente através do método PUT.");
-        }
         Cliente clienteSalvo = clienteService.salvar(request);
         return ResponseEntity.ok(clienteSalvo);
     }

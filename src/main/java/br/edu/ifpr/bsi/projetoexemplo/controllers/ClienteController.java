@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -33,5 +30,17 @@ public class ClienteController {
         return ResponseEntity.ok(clienteSalvo);
     }
 
+    // UPDATE - Atualizar um cliente existente (PUT)
+    @PutMapping("/{codigo}")
+    public ResponseEntity<Cliente> atualizar(@PathVariable Long codigo, @RequestBody Cliente request){
+        Cliente clienteAtualizado = clienteService.atualizar(codigo, request);
+        return ResponseEntity.ok(clienteAtualizado);
+    }
+
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void excluir(@PathVariable Long codigo){
+        clienteService.excluir(codigo);
+    }
 
 }

@@ -2,6 +2,7 @@ package br.edu.ifpr.bsi.projetoexemplo.model.contato;
 
 import br.edu.ifpr.bsi.projetoexemplo.model.GenericModel;
 import br.edu.ifpr.bsi.projetoexemplo.model.cliente.Cliente;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Contato extends GenericModel {
 
     // Embora o cliente também tenha uma lista de contatos, a relação é @ManyToOne aqui porque cada contato pertence a um único cliente
     // O correto é ter um relacionamento bidirecional, se não, o JPA cria uma tabela intermediária para gerenciar a relação @OneToMany, o que não é necessário neste caso aqui
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="cliente_id")
     private Cliente cliente;

@@ -8,7 +8,6 @@ Este repositório contém o projeto de API REST desenvolvido com Spring Boot, re
 Este projeto explora as seguintes tecnologias e conceitos de engenharia de software presentes na ementa da disciplina:
 * **Java e Spring Boot:** Criação de aplicações de forma simples e rápida, já contendo um servidor web embutido (Tomcat).
 * **API RESTful:** Implementação de endpoints e uso prático dos métodos HTTP (GET, POST, PUT, DELETE).
-* **Padrão MVC:** Compreensão da separação das responsabilidades do software entre a representação dos dados, interface do usuário e a lógica de controle.
 * **Persistência de Dados:** Integração com banco de dados utilizando Spring Data JPA para a implementação de repositórios baseados em interfaces.
 
 ## 🚀 Como baixar e executar o projeto no IntelliJ IDEA

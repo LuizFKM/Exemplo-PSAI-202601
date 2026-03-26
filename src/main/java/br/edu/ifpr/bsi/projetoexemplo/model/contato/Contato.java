@@ -25,7 +25,6 @@ public class Contato extends GenericModel {
 
     // Embora o cliente também tenha uma lista de contatos, a relação é @ManyToOne aqui porque cada contato pertence a um único cliente
     // O correto é ter um relacionamento bidirecional, se não, o JPA cria uma tabela intermediária para gerenciar a relação @OneToMany, o que não é necessário neste caso aqui
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="cliente_id")
     private Cliente cliente;

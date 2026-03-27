@@ -28,7 +28,7 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<Cliente> criar(@RequestBody Cliente request) {
         Cliente clienteSalvo = clienteService.salvar(request);
-        return ResponseEntity.ok(clienteSalvo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
     }
 
     // UPDATE - Atualizar um cliente existente (PUT)
@@ -52,7 +52,7 @@ public class ClienteController {
     public ResponseEntity<Cliente> adicionarContato(@PathVariable Long codigo,
                                                     @RequestBody Contato contato){
         Cliente cliente = clienteService.adicionarContato(codigo, contato);
-        return ResponseEntity.ok(cliente);
+        return ResponseEntity.status(HttpStatus.CREATED).body(cliente);
     }
 
 }

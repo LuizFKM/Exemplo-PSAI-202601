@@ -24,6 +24,13 @@ public class ClienteController {
         return ResponseEntity.ok(clientes);
     }
 
+    // READ - Ler umm cliente específico (GET)
+    @GetMapping("/{codigo}")
+    public ResponseEntity<Cliente> buscarCliente(@PathVariable Long codigo) {
+        Cliente cliente = clienteService.buscarId(codigo);
+        return ResponseEntity.ok(cliente);
+    }
+
     // CREATE - Criar um novo cliente (POST)
     @PostMapping
     public ResponseEntity<Cliente> criar(@RequestBody Cliente request) {

@@ -28,6 +28,13 @@ public class ClienteService {
         return this.clienteRepository.save(cliente);
     }
 
+    public Cliente buscarId(Long id){
+        return this.clienteRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND,
+                                "Cliente não encontrado"));
+    }
+
     public Cliente atualizar(Long codigo, Cliente cliente){
             this.clienteRepository.findById(codigo)
                     .orElseThrow(() ->

@@ -17,6 +17,7 @@ public record ClienteDetailDTO(
         String email,
         // Quando temos um DTO relacionado
         // O que está dentro normalmente será o "Summary"
+        String urlFotoPerfil,
         EnderecoResponseDTO endereco,
         List<ContatoResponseDTO> contatos,
         List<PedidoSummaryDTO> pedidos

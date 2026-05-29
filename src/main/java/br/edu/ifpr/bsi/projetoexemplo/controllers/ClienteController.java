@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -54,9 +55,12 @@ public class ClienteController {
     }
 
     // UPDATE - Atualizar um cliente existente pelo Codigo (PUT - atualização completa)
-    @PutMapping("/{codigo}")
-    public ResponseEntity<ClienteDetailDTO> atualizar(@PathVariable Long codigo, @RequestBody ClienteRequestDTO request) {
-        ClienteDetailDTO clienteAtualizado = clienteService.atualizar(codigo, request);
+    @PutMapping(value = "/{codigo}", consumes = "multipart/form-data")
+    public ResponseEntity<ClienteDetailDTO> atualizar(
+            @PathVariable Long codigo,
+            @RequestPart("dados") ClienteRequestDTO request,
+            @RequestPart(value = "imagem", required = false) MultipartFile imagem) {
+        ClienteDetailDTO clienteAtualizado = clienteService.atualizar(codigo, request, imagem);
         return ResponseEntity.ok(clienteAtualizado);
     }
 

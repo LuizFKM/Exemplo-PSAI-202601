@@ -79,7 +79,6 @@ public class ClienteService {
                     "imagem_cliente_" + codigo);
             cliente.setUrlFotoPerfil(urlImagem);
         }
-
         return this.clienteMapper.entityToDetailDTO(this.clienteRepository.save(cliente));
     }
 

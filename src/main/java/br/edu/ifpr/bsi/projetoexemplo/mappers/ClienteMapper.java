@@ -4,7 +4,10 @@ import br.edu.ifpr.bsi.projetoexemplo.model.cliente.Cliente;
 import br.edu.ifpr.bsi.projetoexemplo.model.cliente.ClienteDetailDTO;
 import br.edu.ifpr.bsi.projetoexemplo.model.cliente.ClienteRequestDTO;
 import br.edu.ifpr.bsi.projetoexemplo.model.cliente.ClienteSummaryDTO;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring", uses = {ContatoMapper.class, EnderecoMapper.class})
 public interface ClienteMapper {
@@ -17,5 +20,8 @@ public interface ClienteMapper {
 
     // Converte  a Entidade para  um DTO de resposta resumida (Summary)
     ClienteSummaryDTO entityToSummaryDTO(Cliente cliente);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateFromDto(ClienteRequestDTO dto, @MappingTarget Cliente entity);
 
 }

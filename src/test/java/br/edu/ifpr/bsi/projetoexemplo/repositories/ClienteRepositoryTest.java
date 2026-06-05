@@ -25,6 +25,8 @@ class ClienteRepositoryTest {
         Cliente cliente = new Cliente();
         cliente.setNome("João");
         cliente.setCpf("12345678900");
+        cliente.setUsername("eduardoalba");
+        cliente.setPassword("eduardoalba");
         cliente = clienteRepository.save(cliente);
 
         Cliente clienteInserido = clienteRepository.findById(cliente.getCodigo()).get();
@@ -37,6 +39,8 @@ class ClienteRepositoryTest {
         Cliente cliente = new Cliente();
         cliente.setNome("Maria");
         cliente.setCpf("98765432100");
+        cliente.setUsername("eduardoalba");
+        cliente.setPassword("eduardoalba");
         // O resultado do save é um cliente com seu código gerado pelo DB
         Cliente clienteAlterar = clienteRepository.save(cliente);
 
@@ -54,6 +58,8 @@ class ClienteRepositoryTest {
         Cliente cliente = new Cliente();
         cliente.setNome("Maria");
         cliente.setCpf("98765432100");
+        cliente.setUsername("eduardoalba");
+        cliente.setPassword("eduardoalba");
         Cliente clienteDeletar = clienteRepository.save(cliente);
         clienteRepository.delete(clienteDeletar);
 
@@ -68,6 +74,8 @@ class ClienteRepositoryTest {
         Cliente cliente = new Cliente();
         cliente.setNome("Carlos");
         cliente.setCpf("111.222.333-44");
+        cliente.setUsername("eduardoalba");
+        cliente.setPassword("eduardoalba");
         clienteRepository.save(cliente);
 
         long inicio = System.currentTimeMillis();
@@ -84,6 +92,8 @@ class ClienteRepositoryTest {
         Cliente cliente = new Cliente();
         cliente.setNome("Carlos");
         cliente.setCpf("111.222.333-44");
+        cliente.setUsername("eduardoalba");
+        cliente.setPassword("eduardoalba");
 
         clienteRepository.save(cliente);
 
@@ -97,6 +107,8 @@ class ClienteRepositoryTest {
         Cliente cliente = new Cliente();
         cliente.setNome("Eduardo");
         cliente.setCpf("111.222.333-44");
+        cliente.setUsername("eduardoalba");
+        cliente.setPassword("eduardoalba");
 
         clienteRepository.save(cliente);
 
@@ -111,6 +123,8 @@ class ClienteRepositoryTest {
             Cliente cliente = new Cliente();
             cliente.setNome("Luiz " + i);
             cliente.setCpf("111.222.333-4" + i);
+            cliente.setUsername("eduardoalba" + i);
+            cliente.setPassword("eduardoalba");
             clientes.add(cliente);
         }
         clienteRepository.saveAll(clientes);
@@ -126,20 +140,22 @@ class ClienteRepositoryTest {
         Cliente cliente = new Cliente();
         cliente.setNome("Leticia Laumann");
         cliente.setCpf("555.666.777-88");
+        cliente.setUsername("eduardoalba");
+        cliente.setPassword("eduardoalba");
 
         List<Contato> contatos = new ArrayList<>();
         Contato contato1 = new Contato();
         contato1.setEmail("larissa@gmail.com");
         contato1.setWhatsapp("+55(46)99999-9999");
         contato1.setTelefone("+55(46)99999-9999");
-        contato1.setCliente(cliente);
+        contato1.setUsuario(cliente);
         contatos.add(contato1);
 
         Contato contato2 = new Contato();
         contato2.setEmail("ana@hotmail.com");
         contato2.setWhatsapp("+55(46)88888-8888");
         contato2.setTelefone("+55(46)88888-8888");
-        contato2.setCliente(cliente);
+        contato2.setUsuario(cliente);
         contatos.add(contato2);
 
         cliente.setContatos(contatos);
@@ -155,6 +171,8 @@ class ClienteRepositoryTest {
         Cliente cliente = new Cliente();
         cliente.setNome("Gabriela Fogaça");
         cliente.setCpf("555.666.777-88");
+        cliente.setUsername("eduardoalba" );
+        cliente.setPassword("eduardoalba");
 
         Endereco endereco = new Endereco();
         endereco.setLogradouro("Rua das Flores");

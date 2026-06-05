@@ -1,7 +1,6 @@
 package br.edu.ifpr.bsi.projetoexemplo.model.pedido;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public record PedidoSummaryDTO(
         Long codigo,

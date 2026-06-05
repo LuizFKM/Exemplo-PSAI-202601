@@ -1,7 +1,5 @@
 package br.edu.ifpr.bsi.projetoexemplo.mappers;
 
-import br.edu.ifpr.bsi.projetoexemplo.model.contato.Contato;
-import br.edu.ifpr.bsi.projetoexemplo.model.contato.ContatoRequestDTO;
 import br.edu.ifpr.bsi.projetoexemplo.model.endereco.Endereco;
 import br.edu.ifpr.bsi.projetoexemplo.model.endereco.EnderecoRequestDTO;
 import br.edu.ifpr.bsi.projetoexemplo.model.endereco.EnderecoResponseDTO;

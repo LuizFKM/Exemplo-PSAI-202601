@@ -2,6 +2,7 @@ package br.edu.ifpr.bsi.projetoexemplo.model.cliente;
 
 import br.edu.ifpr.bsi.projetoexemplo.model.contato.ContatoRequestDTO;
 import br.edu.ifpr.bsi.projetoexemplo.model.endereco.EnderecoRequestDTO;
+import br.edu.ifpr.bsi.projetoexemplo.model.usuario.UsuarioRequestDTO;
 
 import java.util.List;
 
@@ -11,11 +12,13 @@ public record ClienteRequestDTO(
         String nome,
         String cpf,
         String email,
-        String senha,
         String urlFotoPerfil,
+        String username,
+        String password,
+        String role,
         // Colocamos o DTO de Request de endereço e contato
         // pois vamos inserir todos juntos
         EnderecoRequestDTO endereco,
         List<ContatoRequestDTO> contatos
-) {
+) implements UsuarioRequestDTO {
 }

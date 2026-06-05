@@ -10,6 +10,7 @@ import br.edu.ifpr.bsi.projetoexemplo.model.contato.ContatoRequestDTO;
 import br.edu.ifpr.bsi.projetoexemplo.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,13 +33,17 @@ public class ClienteService {
     @Autowired
     private StorageService storageService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     @Transactional
     public ClienteDetailDTO salvar(ClienteRequestDTO request) {
         Cliente cliente = this.clienteMapper.requestDTOToEntity(request);
         if (cliente.getContatos() != null && !cliente.getContatos().isEmpty()) {
-            cliente.getContatos().forEach(contato -> contato.setCliente(cliente));
+            cliente.getContatos().forEach(contato -> contato.setUsuario(cliente));
         }
+        cliente.setPassword(this.passwordEncoder.encode(cliente.getPassword()));
         return this.clienteMapper.entityToDetailDTO(this.clienteRepository.save(cliente));
     }
 
@@ -67,11 +72,13 @@ public class ClienteService {
     @Transactional
     public ClienteDetailDTO atualizar(Long codigo, ClienteRequestDTO request,
                                       MultipartFile imagem) {
-        this.clienteRepository.findById(codigo).orElseThrow(() ->
+        Cliente cliente = this.clienteRepository.findById(codigo).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
-        Cliente cliente = this.clienteMapper.requestDTOToEntity(request);
-        cliente.setCodigo(codigo);
+        this.clienteMapper.updateFromDto(request, cliente);
 
+        if (request.password() != null) {
+            cliente.setPassword(this.passwordEncoder.encode(request.password()));
+        }
         if (imagem != null) {
             String urlImagem = storageService.upload(
                     "clientes",

@@ -3,6 +3,7 @@ package br.edu.ifpr.bsi.projetoexemplo.model.cliente;
 import br.edu.ifpr.bsi.projetoexemplo.model.contato.ContatoResponseDTO;
 import br.edu.ifpr.bsi.projetoexemplo.model.endereco.EnderecoResponseDTO;
 import br.edu.ifpr.bsi.projetoexemplo.model.pedido.PedidoSummaryDTO;
+import br.edu.ifpr.bsi.projetoexemplo.model.usuario.UsuarioDetailDTO;
 
 import java.util.List;
 
@@ -15,11 +16,13 @@ public record ClienteDetailDTO(
         String nome,
         String cpf,
         String email,
+        String urlFotoPerfil,
+        String username,
+        String role,
         // Quando temos um DTO relacionado
         // O que está dentro normalmente será o "Summary"
-        String urlFotoPerfil,
         EnderecoResponseDTO endereco,
         List<ContatoResponseDTO> contatos,
         List<PedidoSummaryDTO> pedidos
-) {
+) implements UsuarioDetailDTO {
 }

@@ -1,6 +1,7 @@
 package br.edu.ifpr.bsi.projetoexemplo.model.cliente;
 
 import br.edu.ifpr.bsi.projetoexemplo.model.endereco.EnderecoRequestDTO;
+import br.edu.ifpr.bsi.projetoexemplo.model.usuario.UsuarioSummaryDTO;
 
 // Os DTOS de Summary representam uma versão resumida da Classe
 // Eles são enviados na resposta, frequentemente dentro de outros DTOs
@@ -13,7 +14,9 @@ public record ClienteSummaryDTO(
         String cpf,
         String email,
         String urlFotoPerfil,
+        String username,
+        String role,
         EnderecoRequestDTO endereco
 //        List<ContatoResponseDTO> contatos,
-) {
+) implements UsuarioSummaryDTO {
 }
